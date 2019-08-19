@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class myCharacterController : MonoBehaviour
@@ -29,7 +30,12 @@ public class myCharacterController : MonoBehaviour
 
     void Update()
         {
+        // helath
         helthDispay.text = health.ToString();
+        if (health <= 0)
+            {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            }
 
         rb = GetComponent<Rigidbody2D>();
 
