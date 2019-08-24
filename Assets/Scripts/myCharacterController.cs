@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class myCharacterController : MonoBehaviour
@@ -11,11 +9,28 @@ public class myCharacterController : MonoBehaviour
     public float velocityLow = 12;
 
     public static float characterAngle = 20f;
+    public float gravity;
+    public float smooth = 4;
 
-    Vector3 currentPosition;
-    Vector3 lastPosition;
-    float smooth = 1.0f;
+    static float smallFlapForce = 0.08f;
+    static float bigFlapForce = 0.2f;
+    static float normalFlapHeigh = 0.8f;
+    static float bigFlapHeigh = 3.0f;
 
+    static float sideMove = 1f;
+    static float sideMoveSmooth = 0.1f;
+    static float positionXdestination;
+
+    static int xPosTriger;
+    static int yPosTriger;
+
+    static float y1;
+    static float y0;
+    static float x1;
+    static float x0;
+    static float positionDestination;
+    static float positionBeforeFlap;
+     
     static Rigidbody2D rb;
 
     public int health = 3;
@@ -24,7 +39,6 @@ public class myCharacterController : MonoBehaviour
     void Start()
         {
         rb = GetComponent<Rigidbody2D>();
-        lastPosition = transform.position;
         }
 
 
@@ -39,84 +53,80 @@ public class myCharacterController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        // get current position
-        currentPosition = transform.position;
-        //rb.MoveRotation(rb.rotation + characterAngle * Time.deltaTime);
-
-        // Rotation based on Y current/last position 
-        /*
-        // Going Down
-        if (lastPosition.y > currentPosition.y)
+        y0 = transform.position.y;
+        x0 = transform.position.x;
+        
+       if (positionDestination > y0 && y0 <= 4 )
             {
-            if (lastPosition.x > currentPosition.x)
+            if (yPosTriger == 1)
                 {
-                if (rb.rotation <= -50f)
-                    {
-                    rb.rotation = currentPosition.y;
-                    }
-                else
-                    {
-                    characterAngle = -55f;
-                    }
+                y1 = y0 + bigFlapForce * smooth;
                 }
             else
                 {
-                if (rb.rotation >= 45f)
-                    {
-                    //characterAngle = -15f;
-                    rb.rotation = currentPosition.y;
-                    Debug.Log(rb.rotation);
-                    }
-                else
-                    {
-                    characterAngle = 25f;
-                    }
-                //Debug.Log("down");
+                 y1 = y0 + smallFlapForce * smooth;
                 }
+            
+            }
+       else if (y0 <= -4.6)
+            {
+            y1 = y0 + 0.5f * smooth;
+            }
+       else
+            {
+            y1 = y0 - gravity * smooth;
+            positionDestination = -1000;
             }
 
-        // Going Up
-        else if (lastPosition.y < currentPosition.y)
+        if (xPosTriger ==1)
             {
-            if (rb.rotation <= -50f)
+            if (positionXdestination > x1)
                 {
-                characterAngle = 15f;
-                //rb.rotation = currentPosition.y;
+                x1 = x0 + sideMoveSmooth * smooth;
                 }
             else
                 {
-                characterAngle = -25f;
+                xPosTriger = 0;
                 }
-            //Debug.Log("up");
+            }
+        else if(xPosTriger == 2)
+            {
+            if (positionXdestination < x1)
+                {
+                x1 = x0 - sideMoveSmooth * smooth;
+                }
+            else
+                {
+                xPosTriger = 0;
+                }
+                
             }
 
-        rb.MoveRotation(rb.rotation - characterAngle * Time.smoothDeltaTime);
-        lastPosition = transform.position;
-        */
+
+        transform.position = new Vector2(x1, y1);
         }
 
     public void myCharacterNormalFlap()
         {
-        // Debug.Log("clicked");
-        rb.velocity = Vector2.up * velocityLow;
-        // Debug.Log(rb.position.y);
-
+        yPosTriger = 0;
+        positionDestination = y0 + normalFlapHeigh;
         }
 
     public void myCharacterBigFlap()
         {
-        // Debug.Log("clicked");
-        rb.velocity = Vector2.up * velocityMax;
-        // Debug.Log(rb.position.y);
+        yPosTriger = 1;
+        positionDestination = y0 + bigFlapHeigh;
         }
 
     public void MyCharacterMoveRight()
         {
-        rb.velocity = Vector2.right * velocityLow;
+        positionXdestination = x0 + sideMove;
+        xPosTriger = 1;
         }
 
     public void MyCharacterMoveLeft()
         {
-        rb.velocity = Vector2.left * velocityLow;
+        positionXdestination = x0 - sideMove;
+        xPosTriger = 2;
         }
     }

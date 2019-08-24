@@ -2200,15 +2200,25 @@ PrefabInstance:
       propertyPath: helthDispay
       value: 
       objectReference: {fileID: 2004925014}
+    - target: {fileID: 1637266176745689891, guid: 16d3f7a14afece84da77af92156d735b,
+        type: 3}
+      propertyPath: gravity
+      value: 0.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637266176745689891, guid: 16d3f7a14afece84da77af92156d735b,
+        type: 3}
+      propertyPath: smooth
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1637266176745689889, guid: 16d3f7a14afece84da77af92156d735b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1637266176745689889, guid: 16d3f7a14afece84da77af92156d735b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1637266176745689889, guid: 16d3f7a14afece84da77af92156d735b,
         type: 3}
@@ -2258,21 +2268,26 @@ PrefabInstance:
     - target: {fileID: 1637266176745689889, guid: 16d3f7a14afece84da77af92156d735b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.15245719
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1637266176745689889, guid: 16d3f7a14afece84da77af92156d735b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.15245719
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1637266176745689889, guid: 16d3f7a14afece84da77af92156d735b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.15245719
+      value: 0.12
       objectReference: {fileID: 0}
     - target: {fileID: 1637266176745689888, guid: 16d3f7a14afece84da77af92156d735b,
         type: 3}
       propertyPath: m_Simulated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637266176745689888, guid: 16d3f7a14afece84da77af92156d735b,
+        type: 3}
+      propertyPath: m_BodyType
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
