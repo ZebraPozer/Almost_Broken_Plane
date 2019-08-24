@@ -70,7 +70,7 @@ public class myCharacterController : MonoBehaviour
             }
        else if (y0 <= -4.6)
             {
-            y1 = y0 + 0.5f * smooth;
+            y1 = y0 + 1f *smooth;
             }
        else
             {
