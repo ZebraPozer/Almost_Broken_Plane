@@ -8,6 +8,9 @@ public class myCharacterController : MonoBehaviour
     public float velocityMax = 8;
     public float velocityLow = 12;
 
+    float lerpTime = 1f;
+    float currentLerpTime;
+
     public static float characterAngle = 20f;
     public float gravity;
     public float smooth = 4;
@@ -15,7 +18,7 @@ public class myCharacterController : MonoBehaviour
     static float smallFlapForce = 0.08f;
     static float bigFlapForce = 0.2f;
     static float normalFlapHeigh = 0.8f;
-    static float bigFlapHeigh = 3.0f;
+    static float bigFlapHeigh = 2.0f;
 
     static float sideMove = 1f;
     static float sideMoveSmooth = 0.1f;
@@ -53,18 +56,45 @@ public class myCharacterController : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
+        //up
+        float rotation = rb.rotation;
+
+        if (rb.rotation <= -25f)
+            {
+            rb.rotation = -25f;
+            }
+        if (rb.rotation >= 45f)
+             {
+                rb.rotation = 45f;
+             }
+          
+       /* if (y0 < transform.position.y)
+            {
+                rb.rotation = rotation + 25f * Time.deltaTime;
+            }
+        else
+            {
+            rb.rotation = rotation - 25f * Time.deltaTime;
+            }*/
+
         y0 = transform.position.y;
         x0 = transform.position.x;
-        
-       if (positionDestination > y0 && y0 <= 4 )
+
+        currentLerpTime += Time.deltaTime;
+        float t = currentLerpTime / lerpTime;
+
+        if (positionDestination > y0 && y0 <= 4 )
             {
             if (yPosTriger == 1)
                 {
-                y1 = y0 + bigFlapForce * smooth;
+                y1 = y0 + bigFlapForce * smooth + Mathf.Sin(t * Mathf.PI * 0.0001f);
+                rb.rotation = 0f * Time.deltaTime;
+              
                 }
             else
                 {
-                 y1 = y0 + smallFlapForce * smooth;
+                 y1 = y0 + smallFlapForce * smooth + Mathf.Sin(t * Mathf.PI *0.0005f);
+                rb.rotation = 0f * Time.time * smooth;
                 }
             
             }
@@ -74,6 +104,7 @@ public class myCharacterController : MonoBehaviour
             }
        else
             {
+            rb.rotation = rotation - 15f * Time.deltaTime;
             y1 = y0 - gravity * smooth;
             positionDestination = -1000;
             }
@@ -101,9 +132,10 @@ public class myCharacterController : MonoBehaviour
                 }
                 
             }
+        
+        transform.position = new Vector2(x1, y1 );
 
 
-        transform.position = new Vector2(x1, y1);
         }
 
     public void myCharacterNormalFlap()
