@@ -87,13 +87,13 @@ public class myCharacterController : MonoBehaviour
             {
             if (yPosTriger == 1)
                 {
-                y1 = y0 + bigFlapForce  + Mathf.Sin(t * Mathf.PI * 0.0001f);
+                y1 = y0 + bigFlapForce /* + Mathf.Sin(t * Mathf.PI * 0.0001f)*/;
                 rb.rotation = 0f * Time.deltaTime;
               
                 }
             else
                 {
-                 y1 = y0 + smallFlapForce  + Mathf.Sin(t * Mathf.PI *0.0005f);
+                 y1 = y0 + smallFlapForce/*  + Mathf.Sin(t * Mathf.PI *0.0005f)*/;
                 rb.rotation = 0f * Time.time * smooth;
                 }
             
