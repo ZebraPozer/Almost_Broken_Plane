@@ -7,6 +7,9 @@ public class enemySpikyBomb : MonoBehaviour
     public int damage = 1;
     public float speed;
     static float spawnPointX;
+    private cameraAnimation cameraAnimation;
+
+
     //static float randomMultiplaer;
     //Vector3 currentPosition;
     //public GameObject effect;
@@ -36,6 +39,7 @@ public class enemySpikyBomb : MonoBehaviour
             //Instantiate(effect, transform.position, Quaternion.identity);
             Debug.Log(other.GetComponent<myCharacterController>());
             other.GetComponent<myCharacterController>().health -= damage;
+            //cameraAnimation = GameObject.FindGameObjectsWithTag("cameraAnimation").getComponent<Shake>;
 
             Debug.Log(other.GetComponent<myCharacterController>().health);
             Destroy(gameObject);

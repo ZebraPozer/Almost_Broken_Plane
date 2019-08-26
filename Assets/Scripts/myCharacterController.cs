@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
+
 public class myCharacterController : MonoBehaviour
 {
     public float velocityMax = 8;
@@ -17,7 +18,7 @@ public class myCharacterController : MonoBehaviour
 
     static float smallFlapForce = 0.1f;
     static float bigFlapForce = 0.2f;
-    static float normalFlapHeigh = 1f;
+    static float normalFlapHeigh = 0.8f;
     static float bigFlapHeigh = 2.0f;
 
     static float sideMove = 2.5f;
@@ -51,7 +52,7 @@ public class myCharacterController : MonoBehaviour
         helthDispay.text = health.ToString();
         if (health <= 0)
             {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            SceneManager.LoadScene(1);
             }
 
         rb = GetComponent<Rigidbody2D>();
@@ -89,7 +90,7 @@ public class myCharacterController : MonoBehaviour
             else
                 {
                  y1 = y0 + smallFlapForce/*  + Mathf.Sin(t * Mathf.PI *0.0005f)*/;
-                rb.rotation = 0f * Time.time * smooth;
+                //rb.rotation = 0f * Time.time * smooth;
                 }
             
             }
