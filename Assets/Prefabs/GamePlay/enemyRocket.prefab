@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4917102838704235013}
   m_Layer: 0
   m_Name: enemyRocket
-  m_TagString: Untagged
+  m_TagString: enemyObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

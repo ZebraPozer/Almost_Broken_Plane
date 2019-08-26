@@ -20,7 +20,7 @@ public class myCharacterController : MonoBehaviour
     static float normalFlapHeigh = 1f;
     static float bigFlapHeigh = 2.0f;
 
-    static float sideMove = 1f;
+    static float sideMove = 2.5f;
     static float sideMoveSmooth = 0.1f;
     static float positionXdestination;
 
@@ -58,15 +58,6 @@ public class myCharacterController : MonoBehaviour
 
         //up
         float rotation = rb.rotation;
-
-        if (rb.rotation <= -25f)
-            {
-            rb.rotation = -25f;
-            }
-        if (rb.rotation >= 45f)
-             {
-                rb.rotation = 45f;
-             }
           
        /* if (y0 < transform.position.y)
             {
@@ -88,8 +79,12 @@ public class myCharacterController : MonoBehaviour
             if (yPosTriger == 1)
                 {
                 y1 = y0 + bigFlapForce /* + Mathf.Sin(t * Mathf.PI * 0.0001f)*/;
-                rb.rotation = 0f * Time.deltaTime;
-              
+                /* if (rb.rotation < 0)
+                     {
+                     rb.rotation += 15f ;
+                     }  */
+                //rb.rotation = 0f * Time.deltaTime;
+
                 }
             else
                 {
@@ -98,13 +93,13 @@ public class myCharacterController : MonoBehaviour
                 }
             
             }
-       else if (y0 <= -4.6)
+       else if (y0 <= -4.8)
             {
-            y1 = y0 + 1f *smooth;
+            y1 = y0;
             }
        else
             {
-            rb.rotation = rotation - 15f * Time.deltaTime;
+            //rb.rotation = rotation - 15f * Time.deltaTime;
             y1 = y0 - gravity * (smooth + Mathf.Sin(t * Mathf.PI * 0.0001f));
             positionDestination = -1000;
             }

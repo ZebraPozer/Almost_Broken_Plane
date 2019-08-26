@@ -35,7 +35,7 @@ Material:
     - _BumpAmt: 32.3
     - _Cull: 2
     - _Cutoff: 0.333
-    - _Size: 6.3
+    - _Size: 5.8
     - _WindQuality: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
