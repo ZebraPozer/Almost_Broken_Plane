@@ -6,7 +6,9 @@ public class enemySpikyBomb : MonoBehaviour
 {
     public int damage = 1;
     public float speed;
+    public static float speedM = 2;
     static float spawnPointX;
+    public static float speedInrceaser = 0.00f;
     private cameraAnimation cameraAnimation;
 
 
@@ -24,11 +26,12 @@ public class enemySpikyBomb : MonoBehaviour
      
     private void Update()
         {
-        
-       // transform.Translate(Vector2.left * speed * Time.deltaTime);
-        transform.position = new Vector2(transform.position.x- speed * Time.deltaTime, transform.position.y + (Mathf.Sin(Time.time)) / 2f  * Time.deltaTime );
+        speed += speedInrceaser;
+        // transform.Translate(Vector2.left * speed * Time.deltaTime);
+        transform.position = new Vector2(transform.position.x- speedM * Time.deltaTime, transform.position.y + (Mathf.Sin(Time.time)) / 2f  * Time.deltaTime );
+        Debug.Log(speedM);
         //transform.position = new Vector3(currentPosition.x - speed *Time.deltaTime , Mathf.Sin(Time.fixedTime * 2), currentPosition.z);
-
+        
         }
 
     void OnTriggerEnter2D(Collider2D other)

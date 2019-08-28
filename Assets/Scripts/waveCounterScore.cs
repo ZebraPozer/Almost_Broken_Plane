@@ -7,7 +7,7 @@ public class waveCounterScore : MonoBehaviour
 {
     public Text waveScore;
 
-    public int score;
+    public static int score;
 
     private void OnTriggerEnter2D(Collider2D other)
         {
@@ -16,7 +16,7 @@ public class waveCounterScore : MonoBehaviour
         if (other.CompareTag("enemyObject"))
             {
             score++;
-            Debug.Log(score);
+           // Debug.Log(score);
 
             }
         }

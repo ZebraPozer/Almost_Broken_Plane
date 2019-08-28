@@ -13,17 +13,23 @@ public class myCharacterController : MonoBehaviour
     float currentLerpTime;
 
     public static float characterAngle = 20f;
-    public float gravity;
+    public float gravity = 0.2f;
     public float smooth = 4;
 
-    static float smallFlapForce = 0.1f;
+    static float smallFlapForce = 0.06f;
     static float bigFlapForce = 0.2f;
-    static float normalFlapHeigh = 0.8f;
+    static float normalFlapHeigh = 0.75f;
     static float bigFlapHeigh = 2.0f;
+
+    static float kinematicEnergy = 2.6f;
+    static float gravityEnergy = 1;
+
+    static float tapTrigger;
 
     static float sideMove = 2.5f;
     static float sideMoveSmooth = 0.1f;
     static float positionXdestination;
+    static int score = 10;
 
     static int xPosTriger;
     static int yPosTriger;
@@ -75,34 +81,63 @@ public class myCharacterController : MonoBehaviour
         currentLerpTime += Time.deltaTime;
         float t = currentLerpTime / lerpTime;
 
-        if (positionDestination > y0 && y0 <= 4 )
+        if (positionDestination > y1 && y0 <= 4 )
             {
             if (yPosTriger == 1)
                 {
+                gravityEnergy = 0f;
                 y1 = y0 + bigFlapForce /* + Mathf.Sin(t * Mathf.PI * 0.0001f)*/;
                 /* if (rb.rotation < 0)
                      {
                      rb.rotation += 15f ;
                      }  */
                 //rb.rotation = 0f * Time.deltaTime;
-
+                tapTrigger = 0;
                 }
             else
                 {
-                 y1 = y0 + smallFlapForce/*  + Mathf.Sin(t * Mathf.PI *0.0005f)*/;
+                 gravityEnergy = 0f;
+                 y1 = y0 + smallFlapForce * kinematicEnergy /*  + Mathf.Sin(t * Mathf.PI *0.0005f)*/;
                 //rb.rotation = 0f * Time.time * smooth;
+                if (tapTrigger == 1)
+                    {
+                    kinematicEnergy = 2.6f;
+                    }
+                else { 
+                    if ( kinematicEnergy >= 0.2f)
+                        {
+                        kinematicEnergy -= 0.04f;
+                        //Debug.Log(kinematicEnergy);
+                        }
+                    else
+                        {
+                        kinematicEnergy -= 0.01f;
+                        }
+                }
+                tapTrigger = 0;
                 }
             
             }
        else if (y0 <= -4.8)
             {
+            kinematicEnergy = 2.6f;
             y1 = y0;
             }
        else
             {
+            kinematicEnergy = 2.6f;
             //rb.rotation = rotation - 15f * Time.deltaTime;
-            y1 = y0 - gravity * (smooth + Mathf.Sin(t * Mathf.PI * 0.0001f));
+
+            y1 = y0 - gravity*gravityEnergy * (smooth + Mathf.Sin(t * Mathf.PI * 0.0001f));
             positionDestination = -1000;
+            if (gravity < 1)
+                {
+                gravityEnergy += 0.1f;
+                }
+            else
+                {
+                gravityEnergy = 1.25f;
+                }
             }
 
         if (xPosTriger ==1)
@@ -128,14 +163,23 @@ public class myCharacterController : MonoBehaviour
                 }
                 
             }
-        
-        transform.position = new Vector2(x1, y1 );
+        x1 -= 0.625f * Time.deltaTime;
 
+        if (waveCounterScore.score >= score)
+            {
+            enemySpikyBomb.speedM += 1f;
+            //enemySpikyBomb.speedInrceaser += 0.0005f * Time.deltaTime;
+            score += 10;
+            Debug.Log(score);
+            }
+
+        transform.position = new Vector2(x1, y1);
 
         }
 
     public void myCharacterNormalFlap()
         {
+        tapTrigger = 1;
         yPosTriger = 0;
         positionDestination = y0 + normalFlapHeigh;
         }
