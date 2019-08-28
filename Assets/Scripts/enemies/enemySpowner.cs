@@ -16,7 +16,6 @@ public class enemySpowner : MonoBehaviour
     {
         
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -30,7 +29,6 @@ public class enemySpowner : MonoBehaviour
                 startTimeBtwSpawn -= decreaseTime;
                 }
             }
-
         else
             {
             timeBtwSpawn -= Time.deltaTime;

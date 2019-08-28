@@ -214,8 +214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.75
-  endX: -16
   startX: 18
+  endX: -16
 --- !u!1 &91422041
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,8 +368,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.225
-  endX: -15.6
   startX: 15.6
+  endX: -15.6
 --- !u!212 &110411192
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -464,8 +464,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.7
-  endX: -16
   startX: 18
+  endX: -16
 --- !u!212 &115969491
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -678,8 +678,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  endX: -15.6
   startX: 15.6
+  endX: -15.6
 --- !u!212 &168909450
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1681,8 +1681,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.225
-  endX: -15.6
   startX: 15.6
+  endX: -15.6
 --- !u!212 &558534842
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1809,8 +1809,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
-  endX: -15.6
   startX: 15.6
+  endX: -15.6
 --- !u!212 &602929861
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1952,8 +1952,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  endX: -15.6
   startX: 15.6
+  endX: -15.6
 --- !u!212 &933227969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2092,8 +2092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.65
-  endX: -16
   startX: 18
+  endX: -16
 --- !u!212 &1188901038
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2143,6 +2143,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1309894997
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1309894998}
+  - component: {fileID: 1309894999}
+  m_Layer: 0
+  m_Name: GamePlaySceneLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1309894998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309894997}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4686587, y: -0.19508414, z: 88.98452}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1309894999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309894997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865f347e94a427f4e865fd9bb398aa5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1405589443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2688,8 +2731,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.2
-  endX: -15.6
   startX: 15.6
+  endX: -15.6
 --- !u!1 &1677183566
 GameObject:
   m_ObjectHideFlags: 0
@@ -2858,7 +2901,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveScore: {fileID: 1986116445}
-  score: 0
 --- !u!1 &1793522907
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,8 +2932,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.75
-  endX: -16
   startX: 18
+  endX: -16
 --- !u!212 &1793522909
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3049,8 +3091,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.75
-  endX: -16
   startX: 18
+  endX: -16
 --- !u!1 &1896620041
 GameObject:
   m_ObjectHideFlags: 0
@@ -3203,8 +3245,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.7
-  endX: -16
   startX: 18
+  endX: -16
 --- !u!212 &1966892366
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3285,8 +3327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.75
-  endX: -16
   startX: 18
+  endX: -16
 --- !u!212 &1979677802
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3914,8 +3956,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.65
-  endX: -16
   startX: 18
+  endX: -16
 --- !u!212 &2101766074
 SpriteRenderer:
   m_ObjectHideFlags: 0

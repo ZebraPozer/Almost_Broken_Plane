@@ -6,9 +6,7 @@ using UnityEngine.UI;
 
 public class myCharacterController : MonoBehaviour
 {
-    public float velocityMax = 8;
-    public float velocityLow = 12;
-
+   
     float lerpTime = 1f;
     float currentLerpTime;
 
@@ -29,21 +27,18 @@ public class myCharacterController : MonoBehaviour
     static float sideMove = 2.5f;
     static float sideMoveSmooth = 0.1f;
     static float positionXdestination;
-    static int score = 10;
+    
 
-    static int xPosTriger;
-    static int yPosTriger;
-
-    static float y1;
-    static float y0;
-    static float x1;
-    static float x0;
-    static float positionDestination;
-    static float positionBeforeFlap;
-     
+    static int xPosTriger, yPosTriger;
+   
+    static float y1, y0, x1, x0;
+   
+    static float positionDestination, positionBeforeFlap;
+    
     static Rigidbody2D rb;
 
     public int health = 3;
+    public static int staticHealth;
     public Text helthDispay;
     // Start is called before the first frame update
     void Start()
@@ -56,25 +51,14 @@ public class myCharacterController : MonoBehaviour
         {
         // helath
         helthDispay.text = health.ToString();
-        if (health <= 0)
-            {
-            SceneManager.LoadScene(1);
-            }
+        staticHealth = health;
+       
 
         rb = GetComponent<Rigidbody2D>();
 
         //up
         float rotation = rb.rotation;
-          
-       /* if (y0 < transform.position.y)
-            {
-                rb.rotation = rotation + 25f * Time.deltaTime;
-            }
-        else
-            {
-            rb.rotation = rotation - 25f * Time.deltaTime;
-            }*/
-
+       
         y0 = transform.position.y;
         x0 = transform.position.x;
 
@@ -164,15 +148,7 @@ public class myCharacterController : MonoBehaviour
                 
             }
         x1 -= 0.625f * Time.deltaTime;
-
-        if (waveCounterScore.score >= score)
-            {
-            enemySpikyBomb.speedM += 1f;
-            //enemySpikyBomb.speedInrceaser += 0.0005f * Time.deltaTime;
-            score += 10;
-            Debug.Log(score);
-            }
-
+    
         transform.position = new Vector2(x1, y1);
 
         }
